@@ -1,6 +1,7 @@
 """Este módulo implementa los métodos REST para poder hacer los cálculos"""
 
 # app/app.py
+import os
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
 
@@ -33,6 +34,11 @@ def index():
 
     return render_template("index.html", resultado=resultado)
 
+@app.route("/health")
+def health():
+    return "OK", 200
+
 
 if __name__ == "__main__":  # pragma: no cover
+    app_port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, port=5000, host="0.0.0.0")  # Quita debug=True para producción
