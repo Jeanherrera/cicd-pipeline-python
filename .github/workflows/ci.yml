@@ -37,7 +37,7 @@ jobs:
 
       - name: Run Unit Tests with pytest and Coverage
         run: |
-          pytest --ignore=tests/test_acceptance_app.py  # Genera un informe XML para SonarCloud
+          pytest --ignore=tests/test_acceptance_app.py  --ignore=tests/test_smoke_app.py  # Genera un informe XML para SonarCloud
 
       - name: Run Acceptance Tests
         env:
@@ -91,7 +91,4 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      
-      - name: Run Unit Tests with pytest and Coverage
-        run: |
-          pytest --ignore=tests/test_acceptance_app.py  --ignore=tests/test_smoke_app.py    
+          
