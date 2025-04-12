@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    """Muestra y procesa el formulario de operaciones."""
     resultado = None
     if request.method == "POST":
         try:
@@ -37,6 +38,7 @@ def index():
 
 @app.route("/health")
 def health():
+    """Verifica que la app esté funcionando correctamente."""
     return "OK", 200
 
 
